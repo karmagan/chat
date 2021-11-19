@@ -8,8 +8,6 @@ This exercise will help you practice many of your newly aquired React skills.
 The instructions are included in the `instructions.md` file.
 */
 
-// const users = [{ username: 'Amy' }, { username: 'John' }];
-
 // const messages = [
 //   { username: 'Amy', text: 'Hi, Jon!' },
 //   { username: 'Amy', text: 'How are you?' },
@@ -17,14 +15,15 @@ The instructions are included in the `instructions.md` file.
 // ];
 
 
+const users = [{ username: 'Amy' }, { username: 'John' }];
 
 class App extends Component {
   /*
   If the user did not type anything, he/she should not be
   allowed to submit.
   */
+
   state = {
-    users:[{ username: 'Amy' }, { username: 'John' }],
     messages:[
       { username: 'Amy', text: 'Hi, Jon!' },
       { username: 'Amy', text: 'How are you?' },
@@ -42,7 +41,7 @@ class App extends Component {
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
         <div className="container">
-          {this.state.users.map((user) => <ChatWindow addMessage={this.addMessage} user={user} messages={this.state.messages}></ChatWindow> )}
+          {users.map((user) => <ChatWindow addMessage={this.addMessage} user={user} messages={this.state.messages}></ChatWindow> )}
         </div>
 
 
