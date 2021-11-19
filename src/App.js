@@ -1,29 +1,38 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import ChatWindow from './components/ChatWindow';
 /*
 This exercise will help you practice many of your newly aquired React skills.
 
 The instructions are included in the `instructions.md` file.
 */
 
-const users = [{ username: 'Amy' }, { username: 'John' }];
+// const users = [{ username: 'Amy' }, { username: 'John' }];
 
-const messages = [
-  { username: 'Amy', text: 'Hi, Jon!' },
-  { username: 'Amy', text: 'How are you?' },
-  { username: 'John', text: 'Hi, Amy! Good, you?' },
-];
+// const messages = [
+//   { username: 'Amy', text: 'Hi, Jon!' },
+//   { username: 'Amy', text: 'How are you?' },
+//   { username: 'John', text: 'Hi, Amy! Good, you?' },
+// ];
+
+
 
 class App extends Component {
   /*
   If the user did not type anything, he/she should not be
   allowed to submit.
   */
-  isDisabled = () => {
-    return false;
-  };
+  state = {
+    users:[{ username: 'Amy' }, { username: 'John' }],
+    messages:[
+      { username: 'Amy', text: 'Hi, Jon!' },
+      { username: 'Amy', text: 'How are you?' },
+      { username: 'John', text: 'Hi, Amy! Good, you?' },
+    ]
+  }
+  
+  addMessage = (newMessage) => this.setState({messages: [...this.state.messages,newMessage]})
 
   render() {
     return (
@@ -33,6 +42,12 @@ class App extends Component {
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
         <div className="container">
+          {this.state.users.map((user) => <ChatWindow addMessage={this.addMessage} user={user} messages={this.state.messages}></ChatWindow> )}
+        </div>
+
+
+
+        {/* 
           <div className="chat-window">
             <h2>Super Awesome Chat</h2>
             <div className="name sender">{users[0].username}</div>
@@ -89,8 +104,8 @@ class App extends Component {
               </form>
             </div>
           </div>
-        </div>
-      </div>
+        */}
+      </div> 
     );
   }
 }
